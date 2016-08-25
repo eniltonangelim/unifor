@@ -8,9 +8,10 @@ import javax.swing.JFileChooser;
 import javax.swing.JTextArea;
 
 import br.unifor.editor.bo.ArquivoBO;
+import br.unifor.editor.constants.Message;
 import br.unifor.editor.entity.Arquivo;
 
-public class Salvar extends AbstractAction {
+public class Salvar extends AbstractAction implements Message {
 	
 	/**
 	 * 
@@ -22,7 +23,7 @@ public class Salvar extends AbstractAction {
 	Salvar(JTextArea texto){
 		super("Salvar");
 		this.texto = texto;
-		this.putValue(Action.SHORT_DESCRIPTION, "Salva arquivo texto");
+		this.putValue(Action.SHORT_DESCRIPTION,  shortDescriptionSalvar);
 	}
 
 	@Override
@@ -34,6 +35,7 @@ public class Salvar extends AbstractAction {
 			return;
 		
 		this.arquivoBO = new ArquivoBO(new Arquivo(jfc.getSelectedFile(), this.texto.getText()));
+		this.arquivoBO.salvarArquivo();
 	}
 	
 
