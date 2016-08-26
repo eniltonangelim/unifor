@@ -21,7 +21,7 @@ public class Editor extends JFrame {
 	private JMenu menu = new JMenu("Arquivo");
 	private JTextArea texto = new JTextArea();
 	private Action salvar = new Salvar(this.texto);
-	private Action abrir = new Abrir();
+	private Action abrir = new Abrir(this.texto);
 	
 	public Editor(){
 		super("JEd");

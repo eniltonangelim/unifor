@@ -1,5 +1,6 @@
 package br.unifor.editor.bo;
 
+import java.io.BufferedReader;
 import java.util.StringTokenizer;
 
 import br.unifor.editor.constants.Message;
@@ -24,6 +25,12 @@ public class ArquivoBO implements Message{
 			new SintaxeInvalidaException(sintaxeInvalida);
 		}
 		
+	}
+	
+	public BufferedReader abrirArquivo(){
+		this.arquivoDAO = new ArquivoDAO(arquivo);
+		
+		return this.arquivoDAO.openFile();
 	}
 	
 	private boolean verificaChaves(){
