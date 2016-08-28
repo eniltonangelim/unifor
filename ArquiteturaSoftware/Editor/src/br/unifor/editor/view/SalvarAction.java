@@ -6,12 +6,13 @@ import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JFileChooser;
 import javax.swing.JTextArea;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import br.unifor.editor.bo.ArquivoBO;
 import br.unifor.editor.constants.Message;
 import br.unifor.editor.entity.Arquivo;
 
-public class Salvar extends AbstractAction implements Message {
+public class SalvarAction extends AbstractAction implements Message {
 	
 	/**
 	 * 
@@ -20,8 +21,8 @@ public class Salvar extends AbstractAction implements Message {
 	private JTextArea texto = new JTextArea();
 	private ArquivoBO arquivoBO;
 	
-	Salvar(JTextArea texto){
-		super("Salvar");
+	SalvarAction(JTextArea texto){
+		super(salvarTitle);
 		this.texto = texto;
 		this.putValue(Action.SHORT_DESCRIPTION,  shortDescriptionSalvar);
 	}
@@ -30,6 +31,10 @@ public class Salvar extends AbstractAction implements Message {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		JFileChooser jfc = new JFileChooser();
+		FileNameExtensionFilter filter = new FileNameExtensionFilter(salvarExtensionFilter,"java");
+		jfc.setFileFilter(filter);
+		jfc.setAcceptAllFileFilterUsed(false);
+		
 		int resp = jfc.showSaveDialog(this.texto);
 		if ( resp != JFileChooser.APPROVE_OPTION)
 			return;
