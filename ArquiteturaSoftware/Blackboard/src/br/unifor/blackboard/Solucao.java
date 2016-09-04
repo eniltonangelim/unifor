@@ -32,7 +32,7 @@ public class Solucao {
 		return frase;
 	}
 	public void setFrase(String frase) {
-		this.frase = frase;
+		this.frase += frase;
 	}	
 
 }
