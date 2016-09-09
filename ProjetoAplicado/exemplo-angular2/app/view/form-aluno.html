@@ -1,45 +1,67 @@
 <div class="container">
     <h2 class="text-center">Cadastro de Aluno</h2>
     <hr />
-    <div class="alert alert-success" role="alert">
-        Formulário enviado com sucesso!
-        <br /> {{debug()}}
-    </div>
 
-    <div class="alert alert-success" role="alert" *ngIf="sucesso">
-        Formulário enviado com sucesso!
-        <br />
-        {{debug()}}
-    </div>
-
-    <div class="col-md-4"></div>
     <div class="col-md-4">
-        <form>
+        <form [ngFormModel]="alunoForm">
             <div class="form-group">
-                <label class="control-label">Nome</label>
-                <input type="text" class="form-control" name="nome" id="nome">
+                <label class="control-label" for="nome">Nome</label>
+                <input type="text" class="form-control" name="nome" id="nome" [(ngModel)]="aluno.nome" ngControl="nome">
+                <div [hidden]="alunoForm.find('nome').valid" class="alert alert-danger">Digite um nome</div>
             </div>
             <div class="form-group">
-                <label class="control-label">Email</label>
-                <input type="text" class="form-control" name="email" id="email">
+                <label class="control-label" for="email">Email</label>
+                <input type="text" class="form-control" name="email" id="email" [(ngModel)]="aluno.email" ngControl="email">
+                <div [hidden]="alunoForm.find('email').valid" class="alert alert-danger">Digite um email válido</div>
             </div>
             <div class="form-group">
-                <label class="control-label">Idade</label>
-                <input type="text" class="form-control" name="idade" id="idade">
+                <label class="control-label" for="idade">Idade</label>
+                <input type="text" class="form-control" name="idade" id="idade" [(ngModel)]="aluno.idade">
             </div>
             <div class="form-group">
-                <label class="control-label">Curso</label>
-                <select name="curso" id="curso" class="form-control">
+                <label class="control-label" for="curso">Curso</label>
+                <select name="curso" id="curso" class="form-control" [(ngModel)]="aluno.curso" ngControl="curso">
                 <option value="">Selecione</option>
-                <option>
-
+                <option *ngFor="#curso of cursos" [value]="curso.codigo">
+                     {{curso.nome}}
                 </option>
             </select>
+                <div [hidden]="alunoForm.find('curso').valid" class="alert alert-danger">Selecione um curso</div>
             </div>
+
             <hr />
+
             <div class="form-group text-center">
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                <button class="btn btn-success" *ngIf="idEditar<0" [disabled]="!alunoForm.valid" (click)="cadastrar()">
+                Cadastrar
+            </button>
+                <button class="btn btn-success" *ngIf="idEditar>=0" [disabled]="!alunoForm.valid" (click)="atualizar()">
+                Atualizar
+            </button>
             </div>
         </form>
+    </div>
+    <div class="col-md-8">
+        <div>
+            <table class="table table-striped">
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>&nbsp;</th>
+                </tr>
+                <tr *ngFor="#aluno of alunos; #id=index">
+                    <td>{{aluno.nome}}</td>
+                    <td>{{aluno.email}}</td>
+                    <td>
+                        <button class="btn btn-info" (click)="editar(id)">
+                    Editar
+                </button>
+                        <button class="btn btn-danger" (click)="excluir(id)">
+                    Excluir
+                </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>
