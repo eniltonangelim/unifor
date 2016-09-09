@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', './validators/email-validator', './model/curso', './model/aluno', './service/aluno-service'], function(exports_1) {
+System.register(['angular2/core', 'angular2/common', './validators/email-validator', './validators/idade-validator', './model/curso', './model/aluno', './service/aluno-service'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', 'angular2/common', './validators/email-validat
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, email_validator_1, curso_1, aluno_1, aluno_service_1;
+    var core_1, common_1, email_validator_1, idade_validator_1, curso_1, aluno_1, aluno_service_1;
     var FormAlunoComponent;
     return {
         setters:[
@@ -20,6 +20,9 @@ System.register(['angular2/core', 'angular2/common', './validators/email-validat
             },
             function (email_validator_1_1) {
                 email_validator_1 = email_validator_1_1;
+            },
+            function (idade_validator_1_1) {
+                idade_validator_1 = idade_validator_1_1;
             },
             function (curso_1_1) {
                 curso_1 = curso_1_1;
@@ -48,6 +51,24 @@ System.register(['angular2/core', 'angular2/common', './validators/email-validat
                     this.alunos = this.alunoService.listarTodos();
                 };
                 /*
+                    constructor(fb: FormBuilder) {
+                        this.aluno = new Aluno();
+                        this.cursos = [
+                           new Curso('angular2', 'Angular 2'),
+                           new Curso('javaee', 'Java EE')
+                        ];
+                        this.buildForm(fb);
+                    }
+                
+                    constructor() {
+                        this.aluno = new Aluno();
+                        this.cursos = [
+                           new Curso('angular2', 'Angular 2'),
+                           new Curso('javaee', 'Java EE')
+                        ];
+                    }
+                */
+                /*
                 enviar(): {
                 this.sucesso = true;
                 }
@@ -60,6 +81,7 @@ System.register(['angular2/core', 'angular2/common', './validators/email-validat
                     this.alunoForm = fb.group({
                         nome: ['', common_1.Validators.required],
                         email: ['', common_1.Validators.compose([common_1.Validators.required, email_validator_1.EmailValidator.validate])],
+                        idade: ['', common_1.Validators.compose([common_1.Validators.required, idade_validator_1.IdadeValidator.validate])],
                         curso: ['', common_1.Validators.required]
                     });
                 };

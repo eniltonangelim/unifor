@@ -16,7 +16,8 @@
             </div>
             <div class="form-group">
                 <label class="control-label" for="idade">Idade</label>
-                <input type="text" class="form-control" name="idade" id="idade" [(ngModel)]="aluno.idade">
+                <input type="text" class="form-control" name="idade" id="idade" [(ngModel)]="aluno.idade" ngControl="idade">
+                <div [hidden]="alunoForm.find('idade').valid" class="alert alert-danger">Digite a idade</div>
             </div>
             <div class="form-group">
                 <label class="control-label" for="curso">Curso</label>

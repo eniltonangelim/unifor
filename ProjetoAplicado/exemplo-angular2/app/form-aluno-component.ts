@@ -1,6 +1,7 @@
 import {Component, OnInit} from 'angular2/core';
 import {ControlGroup, FormBuilder, Validators, AbstractControl} from 'angular2/common';
 import {EmailValidator} from './validators/email-validator';
+import {IdadeValidator} from './validators/idade-validator';
 import {Curso} from './model/curso';
 import {Aluno} from './model/aluno';
 import {AlunoService} from './service/aluno-service';
@@ -26,16 +27,13 @@ export class FormAlunoComponent implements OnInit {
 
     ngOnInit() {
         this.aluno = new Aluno();
-        this.cursos = [
-            new Curso('angular2', 'Angular 2'),
-            new Curso('javaee', 'Java EE')
-        ];
+        this.cursos = new Curso();
         this.buildForm(this.fb);
 
         this.idEditar = -1;
         this.alunos = this.alunoService.listarTodos();
     }
-
+/*
     constructor(fb: FormBuilder) {
         this.aluno = new Aluno();
         this.cursos = [
@@ -52,7 +50,7 @@ export class FormAlunoComponent implements OnInit {
            new Curso('javaee', 'Java EE')
         ];    
     }
-
+*/
     /*
     enviar(): {
 	this.sucesso = true;
@@ -67,6 +65,7 @@ export class FormAlunoComponent implements OnInit {
         this.alunoForm = fb.group({
             nome:['',Validators.required],
             email: ['',Validators.compose([Validators.required, EmailValidator.validate])],
+            idade: ['',Validators.compose([Validators.required, IdadeValidator.validate])],
             curso: ['', Validators.required]
         });
     }
