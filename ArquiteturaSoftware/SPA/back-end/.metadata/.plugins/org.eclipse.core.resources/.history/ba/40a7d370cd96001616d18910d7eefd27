@@ -1,0 +1,5 @@
+package br.unifor.restful.resources;
+
+public class ProjetoResource {
+
+}
