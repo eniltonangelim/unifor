@@ -71,7 +71,7 @@ function sendMail(){
 ```
 
 sendMail mail.foobar.com.br 25 "ehlo foobar.com.br\r" "auth login\r" "dGVzdGVAbG9jYWxkb21haW4=\r" "b2JyaWdhZG9zZWFyY2hhbmRyZXBsYWNl
-5lc2NlbmNl\r" "mail from:enilton@foobar.com.br\r" "rcpt to:enilton.angelim@gmail.com\r" "Subject:Teste T186\r\rEspero que der certo\r"
+5lc2NlbmNl\r" "mail from:enilton@foobar.com.br\r" "rcpt to:enilton.angelim@gmail.com\r" "Subject:Teste T186\r\rEspero que dê certo\r"
 
 ```
 250-VRFY
@@ -214,7 +214,7 @@ tcpdump -i any -nnn -AAAA -s 0 port 25
 ..j..RC.
 14:02:44.393173 IP source_ip.39902 > mailserver_ip.25: Flags [P.], seq 164:206, ack 306, win 229, options [nop,nop,TS val 133524175 ecr 4065477599], length 42
 .......#........EH.^.I@./.K..:A...pH....PI...4>............
-..j..RC.Subject:Teste T186^M^MEspero que der certo
+..j..RC.Subject:Teste T186^M^MEspero que dê certo
 
 14:02:44
 ```
@@ -235,7 +235,7 @@ X-Mailer: Zimbra 8.0.7_GA_6021 (ZimbraWebClient - FF52 (Linux)/8.0.7_GA_6021)
 Thread-Topic: Teste T186
 Thread-Index: cyd2d8PnV/B2JR/4QW+skVdAA61fWA==
 
-Espero que der certo
+Espero que dê certo
 ```
 
 ### Teste com criptografia
@@ -256,7 +256,7 @@ uid                  Enilton Angelim (Unifor - T186) <enilton.angelim@gmail.com>
 sub   2048R/5CDACD29 2017-03-22 [expira: 2017-03-23]
 ```
 
-Arquivo teste.txt: `echo "Espero que der certo" >/tmp/teste.txt`
+Arquivo teste.txt: `echo "Espero que dê certo" >/tmp/teste.txt`
 
 Criptografia da mensagem: `gpg --encrypt --sign --armor -r enilton.angelim@gmail.com teste.txt` 
 
